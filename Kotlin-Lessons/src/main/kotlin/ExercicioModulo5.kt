@@ -1,22 +1,18 @@
 fun main() {
-    val carrim = Car(model = "Carroça")
+    val carrim = Car(Model = "Carrim")
     carrim.acelerar()
     carrim.acelerar()
     carrim.acelerar()
     carrim.frear()
     carrim.frear()
     carrim.frear()
+    println(carrim)
 }
 
-abstract class Veiculos(var model: String) {
-    private var velocity: Long
-    abstract var acceletarion: Long
+interface Veiculos {
+    var velocity: Long
+    var acceletarion: Long
 
-    init {
-        this.model = model
-        this.velocity = 0
-        this.acceletarion = 10
-    }
 
     fun acelerar() {
         println("Acelerando...")
@@ -38,10 +34,14 @@ abstract class Veiculos(var model: String) {
     fun getVehicleVelocity() = println("Velocidade: ${this.velocity}")
 }
 
-class Car(model: String) : Veiculos(model) {
-    override var acceletarion: Long = 0
+class Car(val Model: String) : Veiculos {
+    override var acceletarion: Long = 10
+    override var velocity: Long = 0
+
+    override fun toString(): String = "Modelo: $Model - Velocidade: $velocity"
 }
 
-class Moto(model: String) : Veiculos(model) {
+class Moto : Veiculos {
     override var acceletarion: Long = 5
+    override var velocity: Long = 0
 }
