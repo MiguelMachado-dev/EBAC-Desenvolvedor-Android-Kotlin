@@ -1,17 +1,34 @@
 fun main() {
-    val carrim = Car(Model = "Carrim")
-    carrim.acelerar()
-    carrim.acelerar()
-    carrim.acelerar()
-    carrim.frear()
-    carrim.frear()
-    carrim.frear()
-    println(carrim)
+    val factory = VeiculosFactory()
+    val carro = factory.createAnVeiculo(type = 1, id = 1)
+    val moto = factory.createAnVeiculo(type = 2, id = 2)
+    val veiculosList: List<Veiculos> = listOf(carro, moto)
+
+    veiculosList.forEach { veiculo ->
+        if (veiculo is Car) {
+            println(veiculo.name)
+        } else if (veiculo is Moto) {
+            println(veiculo.name)
+        }
+
+        veiculo.acelerar()
+        veiculo.frear()
+    }
+
 }
 
-interface Veiculos {
-    var velocity: Long
-    var acceletarion: Long
+class VeiculosFactory {
+    fun createAnVeiculo(type: Int, id: Int): Veiculos {
+        return when (type) {
+            1 -> Car(id)
+            else -> Moto(id)
+        }
+    }
+}
+
+abstract class Veiculos(private val id: Int) {
+    private var velocity: Long = 0
+    abstract var acceletarion: Long
 
 
     fun acelerar() {
@@ -24,24 +41,22 @@ interface Veiculos {
         println("Freando...")
         this.velocity -= this.acceletarion
 
-        if (this.velocity <= 0) {
+        if (this.velocity < 0) {
             println("O veículo já está parado!")
             this.velocity = 0
         }
         this.getVehicleVelocity()
     }
 
-    fun getVehicleVelocity() = println("Velocidade: ${this.velocity}")
+    private fun getVehicleVelocity() = println("Veiculo de id: $id - Velocidade: ${this.velocity}")
 }
 
-class Car(val Model: String) : Veiculos {
+class Car(id: Int) : Veiculos(id) {
     override var acceletarion: Long = 10
-    override var velocity: Long = 0
-
-    override fun toString(): String = "Modelo: $Model - Velocidade: $velocity"
+    val name = "Carro"
 }
 
-class Moto : Veiculos {
+class Moto(id: Int) : Veiculos(id) {
     override var acceletarion: Long = 5
-    override var velocity: Long = 0
+    val name = "Moto"
 }
