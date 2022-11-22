@@ -1,14 +1,28 @@
 fun main() {
-    var season: Season = Season.SUMMER
+    SchedulerHandler.currentSeason()
+    SchedulerHandler.setSeason(Season.SPRING)
+    SchedulerHandler.currentSeason()
 
-    when (season) {
-        Season.WINTER -> println("É inverno!")
-        Season.SPRING -> println("É primavera!")
-        Season.SUMMER -> println("É verão!")
-        Season.FALL -> println("É outono!")
+    val otherClass = OtherClass()
+    SchedulerHandler.currentSeason()
+}
+
+class OtherClass() {
+    init {
+        SchedulerHandler.setSeason(Season.FALL)
     }
 
-    println(season.translate)
+    fun printCurrentSeason() = SchedulerHandler.currentSeason()
+}
+
+object SchedulerHandler {
+    private var season: Season = Season.WINTER
+
+    fun setSeason(newSeason: Season) {
+        this.season = newSeason
+    }
+
+    fun currentSeason() = println(season)
 }
 
 enum class Season(val translate: String) {
