@@ -8,11 +8,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 
 class MainActivity : AppCompatActivity() {
-  var numClicks: Int = 0
-  var textFieldValue: TextView? = null
-  var button: Button? = null
-  var input: EditText? = null
-  var screen: ConstraintLayout? = null
+  private var numClicks: Int = 0
+  private var textFieldValue: TextView? = null
+  private var button: Button? = null
+  private var input: EditText? = null
+  private var screen: ConstraintLayout? = null
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
