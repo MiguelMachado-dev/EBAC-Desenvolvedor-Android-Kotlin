@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="14sp"
+        android:paddingTop="5sp"
+        android:paddingEnd="14sp"
+        android:paddingBottom="5sp">
+
+    <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/contatoNome"
+            android:layout_weight="1"
+            android:textAlignment="gravity" />
+
+    <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/contatoNumero"
+            android:layout_weight="4"
+            android:textAlignment="textEnd" />
+</LinearLayout>
