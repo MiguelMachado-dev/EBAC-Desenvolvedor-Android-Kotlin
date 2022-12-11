@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Jokenpo</string>
+    <string name="button_title">Iniciar Activity</string>
+    <string name="finish_activity">Finalizar e voltar</string>
 </resources>
